@@ -55,7 +55,10 @@ indoor_pollution <- tuesdata$indoor_pollution
 death_ts <- tuesdata$death_timeseries
 death_full <- tuesdata$death_fuel
 fuel_gdp <- tuesdata$fuel_gdp
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                              2. data wrangling                           ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,8 +106,11 @@ fuel_gdp_clean <- fuel_gdp %>%
   mutate(continent = countrycode::countrycode(sourcevar = Code, origin = "iso3c", destination = "continent")) %>% 
   
   # ANNOTATE (briefly explain this line of code) ----
-  filter(!is.na(continent)) 
+  filter(!is.na(continent))
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                          3. prep ggplot elements                         ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -114,7 +120,10 @@ pal <- c("#02403A", "#0A7373", "#757A62", "#EDAA25", "#C43302")
 
 #......ANNOTATE (generally, what does this code block do?).......
 graph_legend <- "The first graph shows the relation between the decrease of the percentage of deaths and the access to clean fuel.\nEach country is represented by a line connecting all the values from 2002 to 2019.\nIt shows that for many countries the access to clean fuel for cooking increased over\n the years resulting in a reduction of percentage of death due to indoor air pollution.\n\nThe graph below shows the evolution between 1990 and 2019\n in the distribution of the percentage of death among\n the countries of each continent."
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                       4. build connected scatterplot                     ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,7 +181,10 @@ connected_scatterplot <- ggplot(data = connected_scatterplot_df, aes(x = clean_f
         
         # ANNOTATE (briefly explain this line of code) ----
         panel.border = element_blank())
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                            5. build histograms                           ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -253,8 +265,11 @@ histo_evolution <- ggplot(data = histo_evolution_df) +
         strip.text = element_blank(), 
         
         # ANNOTATE (briefly explain this line of code) ----
-        plot.caption = element_text(family = "roboto", size = 12, color = "black", hjust = 0, margin = margin(t = 25, l = 40), lineheight = 1.1)) 
+        plot.caption = element_text(family = "roboto", size = 12, color = "black", hjust = 0, margin = margin(t = 25, l = 40), lineheight = 1.1))
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                              6. build legends                            ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,8 +302,11 @@ legend <- ggplot(data = legend_df) +
   guides(color = "none", fill = "none") + 
   
   # ANNOTATE (briefly explain this line of code) ----
-  theme_void() 
+  theme_void()
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##              7. assemble all plot components using {patchwork}           ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -315,7 +333,10 @@ final_plot <- connected_scatterplot / legend / histo_evolution +
     plot.caption = element_text(family = "techmono", size = 11, color = "#02403A", hjust = 0.95, margin = margin(20,0,5,0))   
   )
 )
+```
 
+
+```{r}
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##                            8. save plot as a PNG                         ----
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -332,6 +353,7 @@ final_plot
 # once off, you should see your .png file appear in outputs/ folder
 dev.off()
 ```
+
 
 ## 1b : Questions
 
