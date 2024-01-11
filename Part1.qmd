@@ -8,6 +8,21 @@ editor_options:
 
 # Part 1: Annotating Code
 
+```{r}
+install.packages(pkgs = c("tidytuesdayR", "showtext", "sysfonts", "countrycode", "glue", "scales", "ragg"))
+
+library(tidyverse)
+library(tidytuesdayR)
+library(patchwork)
+library(showtext)
+library(sysfonts)
+library(countrycode)
+library(glue)
+library(scales)
+library(ragg)
+```
+
+
 ## 1a: Annotate following code:
 
 ```{r}
